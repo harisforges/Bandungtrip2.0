@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bandung trip itinerary and checklist for Haris & Aina, 7-12 September 2026">
+<title>Bandung Trip · Haris & Aina</title>
+<style>
+  :root {
+    --paper: #F5F2EC;
+    --ink: #1F2622;
+    --ink-soft: #5A625B;
+    --moss: #2F6B4F;
+    --moss-light: #E4EFE6;
+    --clay: #C4633A;
+    --clay-light: #F5E4DB;
+    --line: #DAD5C9;
+    --card: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    padding: 0 0 80px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  header {
+    background: var(--moss);
+    color: #F5F2EC;
+    padding: 34px 24px 28px;
+    text-align: center;
+  }
+  header .eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    opacity: 0.75; margin-bottom: 10px;
+  }
+  header h1 { font-size: 34px; font-weight: normal; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.1; }
+  header .sub { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; opacity: 0.85; }
+
+  .tabs { max-width: 780px; margin: 18px auto 0; padding: 0 20px; display: flex; gap: 8px; }
+  .tab {
+    flex: 1; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px;
+    padding: 12px 14px; text-align: center; background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+    color: var(--ink-soft); transition: all 0.15s; user-select: none;
+  }
+  .tab.active { background: var(--moss); color: #fff; border-color: var(--moss); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  main { max-width: 780px; margin: 26px auto 0; padding: 0 20px; }
+
+  /* progress */
+  .progress-wrap { max-width: 780px; margin: 18px auto 0; padding: 0 20px; }
+  .progress-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 20px; box-shadow: 0 4px 16px rgba(31,38,34,0.06);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .progress-info { flex: 1; }
+  .progress-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--ink-soft);
+    margin-bottom: 8px; display: flex; justify-content: space-between;
+  }
+  .progress-track { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--moss), var(--clay)); width: 0%; transition: width 0.4s ease; border-radius: 4px; }
+  .progress-pct { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 26px; font-weight: 600; color: var(--moss); min-width: 56px; text-align: right; }
+  .reset-btn {
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--ink-soft);
+    background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; cursor: pointer; white-space: nowrap;
+  }
+  .reset-btn:hover { background: var(--clay-light); border-color: var(--clay); color: var(--clay); }
+
+  /* checklist */
+  .section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .section-head { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .section-head:hover { background: var(--moss-light); }
+  .section-letter { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #fff; background: var(--moss); width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-title { flex: 1; font-size: 19px; font-weight: normal; }
+  .section-count { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--ink-soft); background: var(--paper); padding: 3px 10px; border-radius: 20px; }
+  .section-count.done { background: var(--moss-light); color: var(--moss); }
+  .chevron { font-size: 13px; color: var(--ink-soft); transition: transform 0.2s; font-family: sans-serif; }
+  .chevron.open { transform: rotate(180deg); }
+  .section-body { display: none; padding: 0 20px 8px; }
+  .section-body.open { display: block; }
+  .item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 4px; border-top: 1px solid var(--line); cursor: pointer; user-select: none; }
+  .item:first-child { border-top: none; }
+  .checkbox { width: 24px; height: 24px; border: 2px solid var(--line); border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; background: #fff; }
+  .item.checked .checkbox { background: var(--moss); border-color: var(--moss); }
+  .checkbox svg { opacity: 0; transition: opacity 0.15s; width: 12px; height: 12px; }
+  .item.checked .checkbox svg { opacity: 1; }
+  .item-text { flex: 1; }
+  .item-main { font-size: 15.5px; transition: color 0.15s; }
+  .item.checked .item-main { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--moss); }
+  .item-note { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
+  .item-tag { display: inline-block; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; background: var(--clay-light); color: var(--clay); font-weight: 600; }
+  .item-tag.critical { background: #F7DAD3; color: #A83B1C; }
+  .item-tag.book { background: #DDE9F5; color: #2C5A8F; }
+
+  /* itinerary */
+  .day { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .day-head { display: flex; align-items: center; gap: 12px; padding: 15px 20px; cursor: pointer; user-select: none; color: #fff; }
+  .day-badge { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 700; background: rgba(255,255,255,0.22); padding: 4px 9px; border-radius: 6px; flex-shrink: 0; }
+  .day-title { flex: 1; font-size: 18px; font-weight: normal; }
+  .day-date { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; opacity: 0.9; }
+  .day-chev { font-family: sans-serif; font-size: 13px; transition: transform 0.2s; }
+  .day-chev.open { transform: rotate(180deg); }
+  .day-body { display: none; padding: 6px 20px 14px; }
+  .day-body.open { display: block; }
+  .day-outfit { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; color: var(--moss); background: var(--moss-light); border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
+  .day-outfit b { color: var(--moss); }
+
+  .travel { display: flex; align-items: center; gap: 8px; padding: 4px 0 4px 72px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11.5px; color: var(--ink-soft); font-style: italic; }
+  .travel::before { content: ""; width: 14px; border-top: 1px dashed var(--clay); }
+
+  .stop { display: flex; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .stop:first-of-type { border-top: none; }
+  .stop-time { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 600; color: var(--clay); width: 58px; flex-shrink: 0; padding-top: 2px; }
+  .stop-info { flex: 1; }
+  .stop-name { font-size: 15.5px; }
+  .stop-dur { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--moss); background: var(--moss-light); padding: 1px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+  .stop-note { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
+  .stop-tag { display: inline-block; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; letter-spacing: 0.4px; text-transform: uppercase; padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; font-weight: 600; }
+  .tag-food { background: #F3E7CF; color: #7A5410; }
+  .tag-night { background: #E4E0F3; color: #4B3F8C; }
+  .tag-warn { background: #F7DAD3; color: #A83B1C; }
+  .stop-hotel { background: var(--moss-light); border-radius: 8px; padding: 8px 12px; margin: 8px 0 2px; }
+  .stop-hotel .stop-name { color: var(--moss); font-size: 14px; }
+  .stop-map { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--clay); text-decoration: none; margin-top: 3px; display: inline-block; }
+  .stop-map:hover { text-decoration: underline; }
+  .contact-block { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 0 0 16px; overflow: hidden; }
+  .contact-head { background: var(--moss); color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; padding: 10px 16px; }
+  .contact-row { display: flex; gap: 10px; padding: 10px 16px; border-top: 1px solid var(--line); font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; align-items: baseline; }
+  .contact-row:first-of-type { border-top: none; }
+  .contact-label { font-weight: 600; color: var(--ink); min-width: 78px; flex-shrink: 0; }
+  .contact-val { color: var(--ink-soft); }
+  .contact-val a { color: var(--clay); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+  .day-tip { background: #F3E7CF; color: #7A5410; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; border-radius: 8px; padding: 9px 13px; margin-top: 10px; line-height: 1.5; }
+  .day-warn { background: #F7DAD3; color: #A83B1C; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; border-radius: 8px; padding: 9px 13px; margin-top: 8px; line-height: 1.5; }
+  .day-totals { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11.5px; color: var(--ink-soft); padding: 8px 0 2px; border-top: 1px solid var(--line); margin-top: 8px; }
+
+  footer { max-width: 780px; margin: 30px auto 0; padding: 0 20px; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--ink-soft); line-height: 1.7; }
+  footer .divider { width: 40px; height: 2px; background: var(--clay); margin: 0 auto 16px; }
+
+  .celebrate { background: var(--moss); color: #fff; text-align: center; padding: 14px; border-radius: 10px; margin: 0 auto 16px; max-width: 740px; font-size: 15px; display: none; }
+  .celebrate.show { display: block; }
+
+  @media (max-width: 620px) {
+    header { padding: 28px 18px 24px; }
+    header h1 { font-size: 28px; }
+    .tabs { padding: 0 14px; gap: 6px; }
+    .tab { font-size: 13px; padding: 11px 8px; }
+    .progress-wrap, main, footer { padding-left: 14px; padding-right: 14px; }
+    .progress-card { padding: 14px 16px; gap: 10px 12px; flex-wrap: wrap; }
+    .progress-info { flex: 1 1 100%; order: 1; }
+    .progress-pct { order: 2; min-width: auto; font-size: 22px; }
+    .reset-btn { order: 3; margin-left: auto; }
+    .section-title { font-size: 16px; }
+    .section-letter { width: 27px; height: 27px; font-size: 14px; }
+    .item-main { font-size: 15px; }
+    .day-title { font-size: 16px; }
+    .day-body { padding: 4px 16px 12px; }
+    .stop-time { width: 52px; font-size: 11px; }
+    .stop-name { font-size: 15px; }
+    .travel { padding-left: 62px; }
+  }
+  @media (max-width: 380px) {
+    header h1 { font-size: 24px; }
+    .day-date { display: none; }
+    .travel { padding-left: 56px; }
+  }
+  @media (hover: none) {
+    .item:active .checkbox { transform: scale(0.92); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Bandung · 7–12 September 2026</div>
+  <h1>Bandung Trip</h1>
+  <div class="sub">Haris Haikal &amp; Aina Izzaty · Malaysia Airlines · Driver: Kiki</div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" id="tab-itin" onclick="switchTab('itin')">Itinerary</div>
+  <div class="tab" id="tab-check" onclick="switchTab('check')">Checklist</div>
+</div>
+
+<!-- ITINERARY -->
+<div class="panel active" id="panel-itin">
+<main id="itin-list"></main>
+<footer>
+  <div class="divider"></div>
+  Times, durations and drive estimates are approximate — Kiki adjusts for real traffic on the day.<br>
+  Tap any day to expand.
+</footer>
+</div>
+
+<!-- CHECKLIST -->
+<div class="panel" id="panel-check">
+<div class="progress-wrap">
+  <div class="progress-card">
+    <div class="progress-info">
+      <div class="progress-label"><span id="prog-text">Getting started</span><span id="prog-count">0 of 0</span></div>
+      <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+    </div>
+    <div class="progress-pct" id="prog-pct">0%</div>
+    <button class="reset-btn" onclick="resetAll()">Reset</button>
+  </div>
+</div>
+<div class="celebrate" id="celebrate">All packed and ready — have an amazing trip! ✦</div>
+<main id="list"></main>
+
+<div style="max-width:780px;margin:0 auto;padding:0 20px 8px;">
+  <div class="contact-block">
+    <div class="contact-head">🏨 Hotels</div>
+    <div class="contact-row"><div class="contact-label">Nights 1–2</div><div class="contact-val"><b>Holiday Inn Bandung Pasteur</b><br>Jl. Dr. Djunjunan No.96, Pasteur 40162<br>📞 <a href="tel:+62222060123">+62 22-2060123</a> · ✉ <a href="mailto:rsvn.bdopa@ihg.com">rsvn.bdopa@ihg.com</a><br>📍 <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Bandung+Pasteur" target="_blank" rel="noopener">Open in Maps</a></div></div>
+    <div class="contact-row"><div class="contact-label">Nights 3–4</div><div class="contact-val"><b>Swiss-Belresort Dago Heritage</b><br>Lapangan Golf Dago Atas No.78, 40135<br>📞 <a href="tel:+622220459999">+62 22-2045-9999</a> · ✉ <a href="mailto:resvsrda@swiss-belhotel.com">resvsrda@swiss-belhotel.com</a><br>📍 <a href="https://www.google.com/maps/search/?api=1&query=Swiss-Belresort+Dago+Heritage+Bandung" target="_blank" rel="noopener">Open in Maps</a></div></div>
+    <div class="contact-row"><div class="contact-label">Night 5</div><div class="contact-val"><b>Fairfield by Marriott Jakarta Soekarno-Hatta</b><br>Jl. Husein Sastranegara No.88, Tangerang<br>📞 <a href="tel:+622150840000">+62 21-5084-0000</a> · 💬 WhatsApp <a href="https://wa.me/6285777113508" target="_blank" rel="noopener">+62 857-7711-3508</a><br>📍 <a href="https://www.google.com/maps/search/?api=1&query=Fairfield+by+Marriott+Jakarta+Soekarno+Hatta+Airport" target="_blank" rel="noopener">Open in Maps</a></div></div>
+  </div>
+  <div class="contact-block">
+    <div class="contact-head">✈️ Flights &amp; Driver</div>
+    <div class="contact-row"><div class="contact-label">MAS out</div><div class="contact-val">7 Sept · KUL (KLIA Main) 7:20am → CGK · Seats 17A + 17B</div></div>
+    <div class="contact-row"><div class="contact-label">MAS return</div><div class="contact-val">12 Sept · CGK (Terminal 3) noon–2pm → KUL</div></div>
+    <div class="contact-row"><div class="contact-label">MAS</div><div class="contact-val">📞 <a href="tel:+60378433000">+60 3-7843-3000</a> · malaysiaairlines.com</div></div>
+    <div class="contact-row"><div class="contact-label">Driver Kiki</div><div class="contact-val">Phone / WhatsApp: ____________ (fill in)</div></div>
+  </div>
+  <div class="contact-block">
+    <div class="contact-head">🚨 Emergency — Indonesia</div>
+    <div class="contact-row"><div class="contact-label">Police</div><div class="contact-val"><a href="tel:110">110</a></div></div>
+    <div class="contact-row"><div class="contact-label">Ambulance</div><div class="contact-val"><a href="tel:118">118</a> / <a href="tel:119">119</a></div></div>
+    <div class="contact-row"><div class="contact-label">General</div><div class="contact-val"><a href="tel:112">112</a></div></div>
+    <div class="contact-row"><div class="contact-label">MY Embassy</div><div class="contact-val"><a href="tel:+62215224947">+62 21-522-4947</a> (Jakarta)</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="divider"></div>
+  Progress saves automatically on this device.<br>
+  Malaysians enter Indonesia visa-free for tourism (up to 30 days).
+</footer>
+</div>
+
+<script>
+/* ============ ITINERARY (approved 2.0, with durations + travel times) ============ */
+const ITIN = [
+  { badge: "DAY 1", title: "Arrival + Bandung City", date: "Sun · 7 Sept", color: "#BA7517",
+    outfit: "Summer outfit — bright, breezy, café-ready",
+    stops: [
+      { time: "7:20am", name: "Depart KLIA Main Terminal — MAS", dur: "flight ~2h", note: "MH KUL → CGK. Arrive CGK ~9:20am Jakarta time. Check-in at KLIA main, NOT KLIA2." },
+      { travel: "Kiki pickup at CGK arrivals → drive to Bandung · 🚗 ~3–3.5h via Tol Cipularang" },
+      { time: "~1:00pm", name: "Check in — Holiday Inn Pasteur", dur: "45 min", note: "Jl. Dr. Djunjunan No.96. Drop bags, freshen up." },
+      { travel: "🚗 ~10 min to Braga" },
+      { time: "~2:30pm", name: "Jalan Braga + Kopi Toko Djawa", dur: "1.5h", note: "Colonial street stroll, street art, retro coffee stop.", tag: "food", tagt: "coffee" },
+      { travel: "🚗 ~10 min" },
+      { time: "~4:30pm", name: "Hello Summer Cafe", dur: "1.5h", note: "Beach-themed, bright summer vibe — perfect for the summer fit.", tag: "food", tagt: "drinks" },
+      { travel: "🚗 ~15 min" },
+      { time: "~7:00pm", name: "Nara Park", dur: "1.5h", note: "Lakeside park with lights, modern cafés, relaxed dinner.", tag: "food", tagt: "dinner" },
+      { travel: "🚗 ~15 min back to hotel" },
+      { time: "~9:00pm", name: "Back to Holiday Inn Pasteur", hotel: true },
+    ],
+    tip: "Light Day 1 — long travel day. City only, nothing formal.",
+    totals: "Active hours ~2:30–9:00pm · driving within city ~50 min total" },
+
+  { badge: "DAY 2", title: "Ciwidey Crater Day", date: "Mon · 8 Sept", color: "#1D9E75",
+    outfit: "Emerald denim casual (day) · black &amp; white (dinner)",
+    stops: [
+      { time: "6:30am", name: "Depart hotel — early start", note: "Beat the fog & crowds at Kawah Putih.", tag: "warn", tagt: "6:30 sharp" },
+      { travel: "🚗 ~2.5h south to Ciwidey" },
+      { time: "~9:00am", name: "Kawah Putih (White Crater)", dur: "1.5h", note: "Turquoise sulphur lake. Shuttle included. Bring jacket — very cold." },
+      { travel: "🚗 ~30 min" },
+      { time: "~11:15am", name: "Cibuni + Kawah Rengganis", dur: "2–2.5h", note: "Hot spring, mud bath, suspension bridge, zipline." },
+      { travel: "🚗 ~10 min" },
+      { time: "~2:00pm", name: "Lunch — local warung near Ciwidey", dur: "45 min", tag: "food", tagt: "makan" },
+      { travel: "🚗 ~2.5h back to Bandung" },
+      { time: "~5:30pm", name: "Back to Holiday Inn Pasteur", hotel: true, note: "Shower, change for dinner." },
+      { travel: "🚗 ~10 min" },
+      { time: "~7:30pm", name: "Iga Galabag", dur: "1.5h", note: "Famous ribs. Black & white dinner outfit fits the moody bistro vibe. Order Jumbo Iga Set + Cabe Ijo Bone Marrow.", tag: "food", tagt: "dinner" },
+      { travel: "🚗 ~10 min back to hotel" },
+      { time: "~9:30pm", name: "Back to Holiday Inn Pasteur", hotel: true },
+    ],
+    warn: "Pack for Cibuni: towel + sandals + full change of clothes. You WILL get muddy — only changing rooms, no shower.",
+    totals: "~6h driving today (Ciwidey is far south). Longest drive day — hence the 6:30am start." },
+
+  { badge: "DAY 3", title: "Elegant Art-Café Day", date: "Tue · 9 Sept", color: "#6D2E5B",
+    outfit: "Elegant modern — cream, refined",
+    stops: [
+      { time: "9:00am", name: "Depart hotel", note: "Toward the Dago hills." },
+      { travel: "🚗 ~30 min" },
+      { time: "~9:30am", name: "Congo Gallery & Café", dur: "1.5h", note: "Wooden elegant café in the pines, calm and refined. Brunch. Matches cream elegance.", tag: "food", tagt: "brunch" },
+      { travel: "🚗 ~25 min" },
+      { time: "~11:30am", name: "Lawangwangi Creative Space", dur: "1.5h", note: "Cliff-edge glass art café, panoramic views, the famous floating pavilion. Elegant lunch. Confirmed open 2026.", tag: "food", tagt: "lunch" },
+      { travel: "🚗 ~20 min" },
+      { time: "~1:30pm", name: "Gia's Garage", dur: "1h", note: "Flower garden café — garden-elegance suits the cream outfit. Check IG for bloom status.", tag: "food", tagt: "garden" },
+      { travel: "🚗 ~20 min" },
+      { time: "~3:00pm", name: "Dago Bakery Punclut", dur: "1h", note: "Castle café, cream/elegant aesthetic, valley views. Coffee.", tag: "food", tagt: "coffee" },
+      { travel: "🚗 ~20 min" },
+      { time: "~4:30pm", name: "Mercusuar Cafe & Resto", dur: "2h", note: "Lighthouse hilltop, golden hour city view. Elegant dinner.", tag: "food", tagt: "dinner" },
+      { travel: "🚗 ~30 min to new hotel" },
+      { time: "~7:30pm", name: "Check in — Swiss-Belresort Dago", hotel: true, note: "Hotel switch — closer to tomorrow's north cluster." },
+    ],
+    tip: "One elegant cream outfit all day — every venue is refined/artsy, no theme-park casual. Check out of Holiday Inn this morning; luggage travels with Kiki.",
+    totals: "Easy driving day (~2.5h total), all in the Dago/hills area. Relaxed pace." },
+
+  { badge: "DAY 4", title: "Cute & Floral Day", date: "Wed · 10 Sept", color: "#D4537E",
+    outfit: "Cute pink &amp; white — playful, floral",
+    stops: [
+      { time: "7:30am", name: "Depart hotel", note: "Big day — early start. Head up to Cikole." },
+      { travel: "🚗 ~50 min to Cikole" },
+      { time: "~8:30am", name: "Strobilus Cafe & Resto", dur: "1h", note: "Pine forest café. Breakfast among the trees. Opens 9am — arrive at open.", tag: "food", tagt: "breakfast" },
+      { travel: "🚗 ~10 min" },
+      { time: "~10:00am", name: "Orchid Forest Cikole", dur: "1.5h", note: "Pine + orchid forest, floral & photogenic — works with cute pink & white." },
+      { travel: "🚗 ~30 min down to Lembang" },
+      { time: "~12:00pm", name: "Farmhouse Susu Lembang", dur: "1h", note: "Pastel European village, cute & photogenic. Lunch nearby.", tag: "food", tagt: "lunch" },
+      { travel: "🚶 walk next door" },
+      { time: "~1:30pm", name: "The Great Asia Africa", dur: "1.5h", note: "Colourful world zones, playful. Same road as Farmhouse — park once." },
+      { travel: "🚗 ~15 min" },
+      { time: "~3:00pm", name: "Floating Market + Rainbow Slide", dur: "1.5h", note: "Colourful, playful. Boat rides + rainbow slide.", tag: "food", tagt: "snacks" },
+      { travel: "🚗 ~35 min to Maribaya" },
+      { time: "~5:00pm", name: "The Lodge Maribaya", dur: "2h", note: "Swings, zip bike, panoramic views. Skirt for photos, pants underneath for the active rides." },
+      { travel: "🚗 ~10 min" },
+      { time: "~8:00pm", name: "Hutan Mycelia", dur: "1h", note: "UV glow forest at night. Opens 6pm only.", tag: "night", tagt: "6pm+ only" },
+      { travel: "🚗 ~1h back to Dago" },
+      { time: "~9:30pm", name: "Back to Swiss-Belresort Dago", hotel: true },
+    ],
+    warn: "Packed day, 7:30am–9:30pm. It fits but it's full — keep moving on time. Hutan Mycelia opens 6pm only.",
+    tip: "Cute pink & white all day. The Lodge: skirt for photos, pants underneath for the swings — no mid-day change needed.",
+    totals: "~3.5h driving spread across the day. Longest single leg is the 1h night drive home from Hutan Mycelia." },
+
+  { badge: "DAY 5", title: "Oleh-Oleh + Drive to Jakarta", date: "Thu · 11 Sept", color: "#7A5410",
+    outfit: "Nice travel outfit — smart casual",
+    stops: [
+      { time: "8:00am", name: "Breakfast + leisure", dur: "1h", note: "Last Bandung morning. No rush." },
+      { time: "~9:30am", name: "Checkout + oleh-oleh shopping", dur: "2h", note: "Kartika Sari (bolu gulung), Amanda Brownies, Cibaduyut shoes.", tag: "food", tagt: "shopping" },
+      { travel: "🚗 short hops around the city" },
+      { time: "~11:30am", name: "Final lunch in Bandung", dur: "1h", tag: "food", tagt: "makan" },
+      { travel: "🚗 ~3–3.5h to Jakarta via Cipularang" },
+      { time: "~4:30pm", name: "Check in — Fairfield Marriott CGK", hotel: true, note: "~5–10 min to airport. Freshen up, rest." },
+      { time: "~6:30pm", name: "Dinner near hotel", dur: "1.5h", note: "Relax — trip essentially done.", tag: "food", tagt: "dinner" },
+      { time: "~8:00pm", name: "Rest at Fairfield Marriott", hotel: true, note: "Pack, charge everything, early night." },
+    ],
+    tip: "Depart Bandung by 1pm → arrive Jakarta ~4:30pm. Comfortable, no rush.",
+    totals: "~3.5h drive to Jakarta plus city errands in the morning." },
+
+  { badge: "DAY 6", title: "Fly Home", date: "Fri · 12 Sept", color: "#888780",
+    outfit: "Comfy travel outfit",
+    stops: [
+      { time: "7:30am", name: "Hotel breakfast", dur: "1h", note: "Full breakfast. Last Indonesian meal." },
+      { time: "~9:30am", name: "Checkout → CGK Terminal 3", note: "Free shuttle / ~5 min. Malaysia Airlines is Terminal 3." },
+      { time: "~10:00am", name: "Check-in + immigration", dur: "2h buffer", note: "Terminal 3. Allow 2 hours before the flight.", tag: "warn", tagt: "T3" },
+      { time: "~12:00pm", name: "CGK → KUL — Malaysia Airlines", dur: "flight ~2h", note: "Arrive KLIA ~2–4pm Malaysian time. Seats 17A (Haris) + 17B (Aina)." },
+    ],
+    tip: "Sleeping near CGK on Night 5 = zero driving stress on Day 6. Walk to check-in.",
+    totals: "Airport hotel means ~5 min to the terminal. Easy exit." },
+];
+
+function renderItin() {
+  const list = document.getElementById('itin-list');
+  list.innerHTML = '';
+  ITIN.forEach((day, di) => {
+    const el = document.createElement('div');
+    el.className = 'day';
+    const head = document.createElement('div');
+    head.className = 'day-head';
+    head.style.background = day.color;
+    head.innerHTML = `<div class="day-badge">${day.badge}</div><div class="day-title">${day.title}</div><div class="day-date">${day.date}</div><div class="day-chev">▾</div>`;
+    const chev = head.querySelector('.day-chev');
+    const body = document.createElement('div');
+    body.className = 'day-body' + (di === 0 ? ' open' : '');
+    if (di === 0) chev.classList.add('open');
+    head.onclick = () => { body.classList.toggle('open'); chev.classList.toggle('open'); };
+
+    let html = '';
+    if (day.outfit) html += `<div class="day-outfit"><b>Outfit:</b> ${day.outfit}</div>`;
+    day.stops.forEach(s => {
+      if (s.travel) { html += `<div class="travel">${s.travel}</div>`; return; }
+      const tag = s.tag ? `<span class="stop-tag tag-${s.tag}">${s.tagt}</span>` : '';
+      const dur = s.dur ? `<span class="stop-dur">${s.dur}</span>` : '';
+      const note = s.note ? `<div class="stop-note">${s.note}</div>` : '';
+      if (s.hotel) {
+        html += `<div class="stop-hotel"><div class="stop-info"><span class="stop-name">${s.time} · ${s.name}</span>${note}</div></div>`;
+      } else {
+        let mapLink = "";
+        if (s.map !== false && !/^Depart |^Lunch|^Final lunch|^Breakfast|^Dinner near|^Check-in|^Checkout|^Hotel/.test(s.name)) {
+          const q = encodeURIComponent((s.map || s.name) + " Bandung");
+          mapLink = `<a class="stop-map" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">\uD83D\uDCCD Open in Maps</a>`;
+        }
+        html += `<div class="stop"><div class="stop-time">${s.time}</div><div class="stop-info"><span class="stop-name">${s.name}${dur}${tag}</span>${note}${mapLink}</div></div>`;
+      }
+    });
+    if (day.warn) html += `<div class="day-warn">${day.warn}</div>`;
+    if (day.tip) html += `<div class="day-tip">${day.tip}</div>`;
+    if (day.totals) html += `<div class="day-totals">⏱ ${day.totals}</div>`;
+    body.innerHTML = html;
+    el.appendChild(head); el.appendChild(body);
+    list.appendChild(el);
+  });
+}
+
+/* ============ CHECKLIST ============ */
+const DATA = [
+  { letter: "A", title: "Admin & Documents", items: [
+    { t: "Passports valid 6+ months beyond travel", n: "Both — expiry after March 2027", tag: "critical" },
+    { t: "No visa needed — Malaysians visa-free 30 days", n: "Tourism entry to Indonesia is visa-free for Malaysian passport holders." },
+    { t: "Fill Indonesia e-Customs Declaration (e-CD)", n: "Online within 2 days before arrival at ecd.beacukai.go.id — get the QR code", tag: "book" },
+    { t: "Print/screenshot flight confirmations", n: "Both MAS legs: 7 Sept out, 12 Sept return" },
+    { t: "Save all hotel bookings", n: "Holiday Inn Pasteur, Swiss-Belresort Dago, Fairfield CGK" },
+    { t: "Save Kiki's contact + share the driver plan", n: "Send him the itinerary before the trip" },
+    { t: "Passport copies in cloud + offline", n: "Email to yourselves + phone" },
+    { t: "Travel insurance purchased", n: "Medical, cancellation, lost luggage" },
+  ]},
+  { letter: "B", title: "Bookings to Confirm", items: [
+    { t: "MAS return flight — CGK to KUL 12 Sept", n: "Noon–2pm departure. KLIA Main Terminal on arrival", tag: "book" },
+    { t: "Seats 17A (Haris) + 17B (Aina)", n: "Both flights — window + middle, just behind the wing for photos" },
+    { t: "Holiday Inn Bandung Pasteur — 2 nights (7–8 Sept)", tag: "book" },
+    { t: "Swiss-Belresort Dago Heritage — 2 nights (9–10 Sept)", tag: "book" },
+    { t: "Fairfield by Marriott CGK — 1 night (11 Sept)", n: "Book early, airport hotels fill fast", tag: "book" },
+    { t: "Confirm Kiki all 6 days (7–12 Sept)", n: "Pickup CGK arrivals 7 Sept ~10am, dropoff CGK T3 on 12 Sept", tag: "critical" },
+  ]},
+  { letter: "C", title: "Cash & Cards", items: [
+    { t: "Exchange Indonesian Rupiah before flying", n: "Many warungs, crater entries & stalls are cash only", tag: "critical" },
+    { t: "Notify bank of overseas travel", n: "Avoid card getting blocked" },
+    { t: "Card with low FX fees" },
+    { t: "Small notes for tips + toll + parking" },
+  ]},
+  { letter: "D", title: "Digital & Connectivity", items: [
+    { t: "Indonesia eSIM or local SIM plan", n: "Active before you land", tag: "critical" },
+    { t: "Download Grab app", n: "Short city trips + food delivery" },
+    { t: "Download Gojek app", n: "Backup ride-hailing" },
+    { t: "Google Maps offline — Bandung area", n: "Patchy signal in the highlands" },
+    { t: "Save this itinerary offline on both phones" },
+    { t: "Google Translate — Indonesian offline" },
+  ]},
+  { letter: "E", title: "Electronics & Camera", items: [
+    { t: "Phone chargers (both)" },
+    { t: "Power bank — charged", n: "Day 4 runs till 9:30pm", tag: "critical" },
+    { t: "Camera + spare battery + memory card", n: "Window shots, craters, cafés" },
+    { t: "Plug adapter", n: "Indonesia Type C/F, 230V" },
+    { t: "Spare cables + flight earphones" },
+  ]},
+  { letter: "F", title: "Footwear & Clothing", items: [
+    { t: "Buy new luggage / suitcases", n: "Samsonite Omni PC or Delsey hardshell. Room for oleh-oleh on the way back", tag: "book" },
+    { t: "Outfits planned per day", n: "Day1 summer · Day2 emerald denim + b/w dinner · Day3 cream elegant · Day4 pink & white cute · Day5 smart casual", tag: "critical" },
+    { t: "Warm jacket / hoodie — BOTH", n: "Kawah Putih & Cikole highlands are genuinely cold", tag: "critical" },
+    { t: "Comfortable walking shoes", n: "Craters, forests, theme parks" },
+    { t: "Sandals for Cibuni mud bath", n: "Day 2 — hot springs & mud", tag: "critical" },
+    { t: "Full change of clothes for Cibuni", n: "No shower there, only changing rooms", tag: "critical" },
+    { t: "Day 4: skirt with pants underneath", n: "For The Lodge — skirt for photos, pants for the swings" },
+    { t: "Swimwear", n: "Swiss-Belresort has a pool" },
+  ]},
+  { letter: "G", title: "Grooming & Toiletries", items: [
+    { t: "Toothbrush, toothpaste, deodorant, basics" },
+    { t: "Sunscreen", n: "Highland sun is strong even when cool" },
+    { t: "Skincare / moisturiser + lip balm", n: "Cold dry highland air" },
+    { t: "Insect repellent", n: "Forest cafés & evening spots" },
+    { t: "Hand sanitiser + wet wipes" },
+    { t: "Travel towel", n: "Doubles for the Cibuni day" },
+  ]},
+  { letter: "H", title: "Health & Medicine", items: [
+    { t: "Personal prescription meds", n: "Enough for the whole trip + buffer", tag: "critical" },
+    { t: "Motion-sickness tablets", n: "Winding roads to Ciwidey & Cikole", tag: "critical" },
+    { t: "First-aid: plasters, painkillers" },
+    { t: "Stomach meds (Imodium, antacid)", n: "New food, street stalls" },
+    { t: "Paracetamol + personal items (contacts, glasses)" },
+  ]},
+  { letter: "I", title: "In Your Day Bag", items: [
+    { t: "John D Blend — don't forget the ciggies!", n: "Indonesia duty-free ~200 sticks / 1 carton per adult. Declare over that.", tag: "critical" },
+    { t: "Refillable water bottle" },
+    { t: "Umbrella / light rain jacket", n: "Dry season but highlands surprise you" },
+    { t: "Sunglasses + hat" },
+    { t: "Cash + small notes for the day" },
+    { t: "Snacks for long drives", n: "Ciwidey day is 2.5h each way" },
+    { t: "Tissue / toilet paper", n: "Some local toilets don't provide it" },
+  ]},
+  { letter: "J", title: "Just Before You Leave Home", items: [
+    { t: "Online check-in for MAS", n: "Opens ~48h before" },
+    { t: "Confirm airport transfer to KLIA", n: "Early 7:20am flight — leave very early" },
+    { t: "Charge all devices + power bank the night before" },
+    { t: "Arrive KLIA Main Terminal 2.5–3h early", tag: "critical" },
+    { t: "Lock up, empty fridge, sort home" },
+    { t: "Reconfirm Kiki the day before", n: "Pickup time + CGK meeting point" },
+  ]},
+  { letter: "K", title: "Key Day Reminders", items: [
+    { t: "Day 2 — depart hotel 6:30am SHARP", n: "Kawah Putih foggy & packed by 10am", tag: "critical" },
+    { t: "Day 2 — pack the mud-bath kit separately", n: "Towel, sandals, spare clothes ready the night before" },
+    { t: "Day 3 — checkout Holiday Inn, switch to Swiss-Belresort tonight", n: "Luggage travels with Kiki through the day" },
+    { t: "Day 3 — check Gia's Garage Instagram", n: "Confirm flowers are blooming" },
+    { t: "Day 4 — Hutan Mycelia opens 6pm only", n: "Don't arrive before sunset" },
+    { t: "Day 4 — packed 7:30am–9:30pm", n: "Keep to timings, it's a full day" },
+    { t: "Day 6 — CGK Terminal 3 for MAS", n: "Not T2. Arrive 2h early", tag: "critical" },
+  ]},
+  { letter: "L", title: "Last-Day Souvenirs (Oleh-Oleh)", items: [
+    { t: "Kartika Sari — bolu gulung (roll cake)" },
+    { t: "Amanda Brownies", n: "Iconic Bandung steamed brownies" },
+    { t: "Cibaduyut leather shoes / goods" },
+    { t: "Coffee beans (West Java single origin)" },
+    { t: "Batik / crafts from Braga area" },
+    { t: "Peuyeum / local snacks for family" },
+  ]},
+];
+
+let state = {};
+let allKeys = [];
+const KEY = 'bandung_checklist_state';
+const hasClaudeStorage = (typeof window !== 'undefined') && window.storage && typeof window.storage.get === 'function';
+
+async function storageGet() {
+  if (hasClaudeStorage) { try { const r = await window.storage.get(KEY); return r ? r.value : null; } catch (e) { return null; } }
+  try { return localStorage.getItem(KEY); } catch (e) { return null; }
+}
+async function storageSet(v) {
+  if (hasClaudeStorage) { try { await window.storage.set(KEY, v); return; } catch (e) {} }
+  try { localStorage.setItem(KEY, v); } catch (e) {}
+}
+async function load() {
+  DATA.forEach((sec, si) => sec.items.forEach((it, ii) => allKeys.push(`s${si}i${ii}`)));
+  render();
+  let saved = null;
+  try { saved = await storageGet(); } catch (e) {}
+  if (saved) { try { state = JSON.parse(saved); render(); } catch (e) {} }
+}
+async function save() { await storageSet(JSON.stringify(state)); }
+
+function render() {
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  DATA.forEach((sec, si) => {
+    const total = sec.items.length;
+    const done = sec.items.filter((_, ii) => state[`s${si}i${ii}`]).length;
+    const section = document.createElement('div');
+    section.className = 'section';
+    const head = document.createElement('div');
+    head.className = 'section-head';
+    head.innerHTML = `<div class="section-letter">${sec.letter}</div><div class="section-title">${sec.title}</div><div class="section-count${done===total?' done':''}" data-count="${si}">${done}/${total}</div><div class="chevron">▾</div>`;
+    const chev = head.querySelector('.chevron');
+    const body = document.createElement('div');
+    body.className = 'section-body';
+    head.onclick = () => { body.classList.toggle('open'); chev.classList.toggle('open'); };
+    sec.items.forEach((it, ii) => {
+      const key = `s${si}i${ii}`;
+      const item = document.createElement('div');
+      item.className = 'item' + (state[key] ? ' checked' : '');
+      item.onclick = (e) => { e.stopPropagation(); state[key] = !state[key]; item.classList.toggle('checked', state[key]); save(); refreshCounts(si); };
+      const tag = it.tag ? `<span class="item-tag ${it.tag}">${it.tag === 'critical' ? 'must' : it.tag === 'book' ? 'book' : it.tag}</span>` : '';
+      const note = it.n ? `<div class="item-note">${it.n}</div>` : '';
+      item.innerHTML = `<div class="checkbox"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-text"><span class="item-main">${it.t}${tag}</span>${note}</div>`;
+      body.appendChild(item);
+    });
+    section.appendChild(head); section.appendChild(body);
+    list.appendChild(section);
+  });
+  updateProgress();
+}
+function refreshCounts(si) {
+  const sec = DATA[si], total = sec.items.length;
+  const done = sec.items.filter((_, ii) => state[`s${si}i${ii}`]).length;
+  const el = document.querySelector(`[data-count="${si}"]`);
+  if (el) { el.textContent = `${done}/${total}`; el.classList.toggle('done', done === total); }
+  updateProgress();
+}
+function updateProgress() {
+  const total = allKeys.length, done = allKeys.filter(k => state[k]).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-count').textContent = `${done} of ${total}`;
+  const txt = document.getElementById('prog-text');
+  txt.textContent = pct === 0 ? 'Getting started' : pct < 40 ? 'Just beginning' : pct < 75 ? 'Making progress' : pct < 100 ? 'Almost there' : 'Ready to fly';
+  document.getElementById('celebrate').classList.toggle('show', pct === 100);
+}
+async function resetAll() { state = {}; await save(); render(); }
+
+function switchTab(which) {
+  document.getElementById('tab-itin').classList.toggle('active', which === 'itin');
+  document.getElementById('tab-check').classList.toggle('active', which === 'check');
+  document.getElementById('panel-itin').classList.toggle('active', which === 'itin');
+  document.getElementById('panel-check').classList.toggle('active', which === 'check');
+}
+
+function start() {
+  try { renderItin(); } catch (e) {}
+  try { load(); } catch (e) { try { render(); } catch (e2) {} }
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+else start();
+</script>
+</body>
+</html>
