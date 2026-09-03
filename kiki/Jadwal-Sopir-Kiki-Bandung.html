@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8">
+<title>Jadwal Sopir — Bandung 7-12 September 2026</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 12mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "DejaVu Sans", Arial, sans-serif; color: #1b1b1b; font-size: 10pt; line-height: 1.35; }
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+
+.cover-head { background:#15764F; color:#fff; padding:14px 18px; border-radius:6px; }
+.cover-head .k { font-size:9pt; letter-spacing:2.5px; text-transform:uppercase; opacity:.85; }
+.cover-head h1 { font-size:21pt; line-height:1.1; margin:6px 0 8px; font-weight:700; }
+.cover-head .s { font-size:10pt; opacity:.95; }
+.cover-head .s b { font-weight:700; }
+
+h2 { font-size:11.5pt; margin:11px 0 5px; padding-bottom:4px; border-bottom:2px solid #15764F; color:#15764F; }
+h2.alt { color:#B23A16; border-bottom-color:#B23A16; }
+
+table { width:100%; border-collapse:collapse; }
+.sum th { background:#EDEDE7; font-size:8.5pt; text-transform:uppercase; letter-spacing:.6px;
+          text-align:left; padding:6px 7px; border:1px solid #CFCFC6; }
+.sum td { padding:4px 7px; border:1px solid #CFCFC6; font-size:9pt; vertical-align:top; }
+.sum td.d { font-weight:700; white-space:nowrap; }
+.sum tr:nth-child(even) td { background:#FAFAF7; }
+
+.notebox { border:1px solid #E3C7A6; background:#FDF6EC; border-radius:5px; padding:8px 12px; }
+.notebox .row { display:flex; gap:9px; padding:2.5px 0; }
+.notebox .row + .row { border-top:1px dotted #E3C7A6; }
+.notebox .num { flex:0 0 16px; height:16px; border-radius:50%; background:#B23A16; color:#fff;
+                font-size:8pt; font-weight:700; text-align:center; line-height:16px; }
+.notebox .txt { flex:1; font-size:9pt; }
+.notebox .txt b { display:block; }
+.notebox .txt span { color:#4A4A44; }
+
+.ct { display:flex; flex-wrap:wrap; }
+.ct .c { width:50%; padding:3px 10px 3px 0; font-size:8.8pt; }
+.ct .c b { display:block; color:#222; }
+.ct .c span { color:#4A4A44; }
+
+.dayhead { color:#fff; padding:12px 16px; border-radius:6px 6px 0 0; }
+.dayhead .n { font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; opacity:.9; }
+.dayhead h1 { font-size:17pt; font-weight:700; margin:2px 0 3px; }
+.dayhead .dt { font-size:10pt; opacity:.95; }
+.daymeta { display:flex; border:1px solid #D8D8D0; border-top:none; }
+.daymeta div { flex:1; padding:7px 12px; font-size:9pt; border-right:1px solid #E6E6DF; }
+.daymeta div:last-child { border-right:none; }
+.daymeta span { display:block; font-size:7.5pt; letter-spacing:1px; text-transform:uppercase; color:#7A7A72; }
+
+.sched { width:100%; border-collapse:collapse; margin-top:10px; }
+.sched th { background:#EDEDE7; font-size:8pt; text-transform:uppercase; letter-spacing:.7px;
+            text-align:left; padding:5px 7px; border:1px solid #CFCFC6; }
+.sched td { border:1px solid #D8D8D0; padding:5px 7px; font-size:9.5pt; vertical-align:top; }
+.compact .sched td { padding:3px 6px; font-size:8.8pt; }
+.compact .sched td.tuj b { font-size:9.2pt; }
+.compact .sched td.jam { font-size:9.2pt; }
+.compact .sched tr.drive td { font-size:8.2pt; padding:3px; }
+.compact .dnotes li { font-size:8.5pt; }
+.sched td.jam { width:52px; font-weight:700; white-space:nowrap; font-size:10pt; }
+.sched td.tuj { width:34%; }
+.sched td.tuj b { font-size:10pt; }
+.sched td.tuj .area { display:block; color:#5C5C55; font-size:8.5pt; margin-top:2px; }
+.sched td.tuj a { display:block; color:#1a5fb4; font-size:8pt; margin-top:2px; text-decoration:none; word-break:break-all; }
+.sched td.lama { width:62px; text-align:center; font-size:8.5pt; color:#444; }
+.sched td.cat { font-size:9pt; color:#33332E; }
+.sched tr.drive td { background:#F1F5F2; color:#15764F; font-weight:700; font-size:9pt;
+                     text-align:center; padding:5px; letter-spacing:.3px; }
+
+.dnotes { margin-top:10px; border-left:4px solid #B26C12; background:#FDF8EF; padding:9px 12px; }
+.dnotes b { display:block; font-size:8.5pt; text-transform:uppercase; letter-spacing:1px; color:#8A5A10; margin-bottom:4px; }
+.dnotes li { margin-left:15px; font-size:9pt; padding:1px 0; }
+
+.sign { margin-top:8px; border:1px dashed #B9B9AF; border-radius:5px; padding:8px 12px; font-size:8.6pt; color:#55554E; }
+.foot { margin-top:12px; font-size:8pt; color:#84847C; text-align:center; }
+</style></head><body>
+<div class="page">
+  <div class="cover-head">
+    <div class="k">Jadwal untuk Pak Kiki &middot; Sopir</div>
+    <h1>Perjalanan Bandung<br>7 &ndash; 12 September 2026</h1>
+    <div class="s">Tamu: <b>Haris Haikal &amp; Aina Izzaty</b> (2 orang, dari Malaysia)<br>
+    6 hari &middot; jemput di Bandara Soekarno-Hatta, antar kembali ke Bandara Soekarno-Hatta</div>
+  </div>
+
+  <h2>Ringkasan 6 Hari</h2>
+  <table class="sum">
+    <tr><th>Hari</th><th>Tanggal</th><th>Jemput</th><th>Selesai</th><th>Area</th><th>Menginap</th></tr>
+    <tr><td class="d">Hari 1</td><td class="d">Min, 7 Sep</td><td>10.00 (jemput CGK)</td><td>21.00</td><td>Jakarta &rarr; Bandung, kota</td><td>Holiday Inn Pasteur</td></tr><tr><td class="d">Hari 2</td><td class="d">Sen, 8 Sep</td><td><b>06.30</b></td><td>21.30</td><td>Ciwidey (selatan)</td><td>Holiday Inn Pasteur</td></tr><tr><td class="d">Hari 3</td><td class="d">Sel, 9 Sep</td><td>09.00</td><td>19.30</td><td>Dago &amp; Punclut</td><td><b>Pindah</b> &rarr; Swiss-Belresort Dago</td></tr><tr><td class="d">Hari 4</td><td class="d">Rab, 10 Sep</td><td>07.30</td><td>21.30</td><td>Lembang &amp; Cikole (utara)</td><td>Swiss-Belresort Dago</td></tr><tr><td class="d">Hari 5</td><td class="d">Kam, 11 Sep</td><td>09.30</td><td>16.30</td><td>Oleh-oleh &rarr; Jakarta</td><td><b>Pindah</b> &rarr; Fairfield dekat bandara</td></tr><tr><td class="d">Hari 6</td><td class="d">Jum, 12 Sep</td><td>09.30</td><td>10.00</td><td>Antar ke CGK Terminal 3</td><td>—</td></tr>
+  </table>
+
+  <h2 class="alt">Yang Paling Penting Diingat</h2>
+  <div class="notebox"><div class="row"><div class="num">1</div><div class="txt"><b>Hari 2 berangkat 06.30 pagi</b><span>Kawah Putih berkabut &amp; penuh setelah jam 10. Ini jam paling penting sepanjang trip.</span></div></div><div class="row"><div class="num">2</div><div class="txt"><b>Hari 2 tamu basah &amp; berlumpur</b><span>Setelah Cibuni Rengganis tidak ada kamar mandi. Siapkan alas plastik/handuk untuk jok mobil.</span></div></div><div class="row"><div class="num">3</div><div class="txt"><b>Hari 3 pindah hotel</b><span>Checkout Holiday Inn pagi, koper ikut mobil seharian, check-in Swiss-Belresort Dago malam.</span></div></div><div class="row"><div class="num">4</div><div class="txt"><b>Hari 4 paling padat</b><span>07.30 sampai 21.30. Hutan Mycelia baru buka jam 18.00, jadi memang selesai malam.</span></div></div><div class="row"><div class="num">5</div><div class="txt"><b>Hari 5 berangkat ke Jakarta maksimal jam 13.00</b><span>Supaya tidak kena macet sore di Cipularang.</span></div></div><div class="row"><div class="num">6</div><div class="txt"><b>Hari 6 Terminal 3</b><span>Malaysia Airlines di CGK Terminal 3, bukan Terminal 2.</span></div></div><div class="row"><div class="num">7</div><div class="txt"><b>Tamu Muslim dari Malaysia</b><span>Semua tempat makan harus halal. Bahasa Melayu &amp; Indonesia mirip, komunikasi mudah.</span></div></div></div>
+
+  <h2>Kontak</h2>
+  <div class="ct"><div class="c"><b>Tamu &mdash; Haris Haikal</b><span>HP / WA: __________________</span></div><div class="c"><b>Tamu &mdash; Aina Izzaty</b><span>HP / WA: __________________</span></div><div class="c"><b>Holiday Inn Bandung Pasteur</b><span>Jl. Dr. Djunjunan No. 96 &middot; (022) 2060123</span></div><div class="c"><b>Swiss-Belresort Dago Heritage</b><span>Lap. Golf Dago Atas No. 78 &middot; (022) 2045-9999</span></div><div class="c"><b>Fairfield by Marriott CGK</b><span>Jl. Husein Sastranegara No. 88 &middot; (021) 5084-0000</span></div><div class="c"><b>Darurat</b><span>Polisi 110 &middot; Ambulans 118 / 119 &middot; Umum 112</span></div></div>
+
+  <div class="sign">
+    <b>Nomor Pak Kiki:</b> ____________________ &nbsp; <b>Plat mobil:</b> ____________________<br>
+    <b>Biaya:</b> bensin, tol, dan parkir mohon simpan struknya &mdash; diganti oleh tamu. Makan Pak Kiki ditanggung tamu.
+    Semua jam perkiraan &mdash; boleh disesuaikan dengan lalu lintas.
+  </div>
+</div>
+<div class="page">
+  <div class="dayhead" style="background:#B26C12">
+    <div class="n">HARI 1</div>
+    <h1>Jemput Bandara + Keliling Kota Bandung</h1>
+    <div class="dt">Minggu, 7 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>Jemput di CGK ± 10.00 WIB</div>
+    <div><span>Selesai</span>± 21.00 di hotel</div>
+    <div><span>Menginap</span>Holiday Inn Bandung Pasteur (malam 1)</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">09.20</td><td class="tuj"><b>Pesawat tamu mendarat — CGK Terminal 3</b><span class="area">Bandara Soekarno-Hatta, kedatangan internasional</span></td><td class="lama">—</td><td class="cat">Malaysia Airlines dari Kuala Lumpur. Tunggu di pintu kedatangan Terminal 3, bawa papan nama <b>HARIS &amp; AINA</b>. Imigrasi + bagasi biasanya 30-45 menit.</td></tr><tr><td class="jam">± 10.00</td><td class="tuj"><b>Berangkat dari bandara ke Bandung</b></td><td class="lama">—</td><td class="cat">Bantu angkat 2 koper besar. Tamu baru terbang pagi buta — boleh langsung jalan, mampir rest area kalau mereka minta.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; PERJALANAN: CGK &rarr; Bandung lewat Tol Cipularang &mdash; &plusmn; 3 &ndash; 3,5 jam</td></tr><tr><td class="jam">± 13.00</td><td class="tuj"><b>Check-in Holiday Inn Bandung Pasteur</b><span class="area">Jl. Dr. Djunjunan No. 96, Pasteur, Bandung 40162</span></td><td class="lama">45 menit</td><td class="cat">Tamu taruh koper &amp; istirahat sebentar. Kiki boleh makan siang di sini.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 14.30</td><td class="tuj"><b>Jalan Braga + Kopi Toko Djawa</b><span class="area">Jl. Braga, Bandung Wetan</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Jalan%20Braga%20%2B%20Kopi%20Toko%20Djawa%20Jl.%20Braga%2C%20Bandung%20Wetan">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Tamu jalan kaki di sepanjang Braga, foto-foto, ngopi. Parkir di sekitar Braga / Braga City Walk.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 16.30</td><td class="tuj"><b>Hello Summer Cafe</b><span class="area">Kota Bandung — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hello%20Summer%20Cafe%20Kota%20Bandung%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Kafe tema pantai. Tamu foto-foto + minum.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 15 menit</td></tr><tr><td class="jam">± 19.00</td><td class="tuj"><b>Nara Park</b><span class="area">Kota Bandung — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Nara%20Park%20Kota%20Bandung%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Makan malam di taman tepi danau.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 15 menit balik ke hotel</td></tr><tr><td class="jam">± 21.00</td><td class="tuj"><b>Antar kembali ke Holiday Inn Pasteur</b></td><td class="lama">selesai</td><td class="cat">Konfirmasi jam jemput besok: <b>06.30 pagi</b>.</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Hari ini santai — tamu baru sampai, jangan dipadatkan.</li><li>Total nyetir dalam kota hari ini hanya &plusmn; 50 menit. Yang panjang cuma tol dari Jakarta.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 1 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div>
+<div class="page">
+  <div class="dayhead" style="background:#15764F">
+    <div class="n">HARI 2</div>
+    <h1>Ciwidey — Kawah Putih & Kawah Rengganis</h1>
+    <div class="dt">Senin, 8 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>06.30 dari hotel (TEPAT WAKTU)</div>
+    <div><span>Selesai</span>± 21.30 di hotel</div>
+    <div><span>Menginap</span>Holiday Inn Bandung Pasteur (malam 2)</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">06.30</td><td class="tuj"><b>Berangkat dari hotel — <b>tepat waktu</b></b></td><td class="lama">—</td><td class="cat">Wajib pagi. Kalau sampai Kawah Putih lewat jam 10 sudah kabut dan penuh. Mobil siap 06.20.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; PERJALANAN: Bandung &rarr; Ciwidey (Rancabali) &mdash; &plusmn; 2,5 jam</td></tr><tr><td class="jam">± 09.00</td><td class="tuj"><b>Kawah Putih</b><span class="area">Ciwidey / Rancabali, Kabupaten Bandung</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Kawah%20Putih%20Ciwidey%20/%20Rancabali%2C%20Kabupaten%20Bandung">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Parkir di bawah, tamu naik shuttle (ontang-anting) ke kawah. Ingatkan tamu bawa jaket — di atas dingin.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 30 menit</td></tr><tr><td class="jam">± 11.15</td><td class="tuj"><b>Cibuni + Kawah Rengganis</b><span class="area">Rancabali, Ciwidey</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Cibuni%20%2B%20Kawah%20Rengganis%20Rancabali%2C%20Ciwidey">📍 Buka di Google Maps</a></td><td class="lama">2 – 2,5 jam</td><td class="cat">Air panas, mandi lumpur, jembatan gantung, zipline. Tamu akan basah &amp; kotor — <b>siapkan alas plastik / handuk di jok mobil</b>. Di sana cuma ada ruang ganti, tidak ada kamar mandi.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 14.00</td><td class="tuj"><b>Makan siang — warung sekitar Ciwidey</b></td><td class="lama">45 menit</td><td class="cat">Kiki boleh pilihkan warung Sunda favorit. Tamu Muslim dari Malaysia — pastikan halal.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; PERJALANAN: Ciwidey &rarr; Bandung &mdash; &plusmn; 2,5 jam</td></tr><tr><td class="jam">± 17.30</td><td class="tuj"><b>Kembali ke Holiday Inn Pasteur</b></td><td class="lama">2 jam</td><td class="cat">Tamu mandi &amp; ganti baju. Kiki istirahat / makan.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 19.30</td><td class="tuj"><b>Makan malam — Iga Galabag</b><span class="area">Kota Bandung — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Makan%20malam%20%E2%80%94%20Iga%20Galabag%20Kota%20Bandung%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat"></td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit balik ke hotel</td></tr><tr><td class="jam">± 21.30</td><td class="tuj"><b>Antar kembali ke Holiday Inn Pasteur</b></td><td class="lama">selesai</td><td class="cat">Besok jemput <b>09.00</b> — dan besok pindah hotel, koper ikut mobil.</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Hari paling jauh: total nyetir &plusmn; 6 jam. Isi bensin penuh malam sebelumnya.</li><li>Jalan ke Ciwidey berkelok — tamu minum obat anti-mabuk, jalan santai saja.</li><li>Kalau ada penjual strawberry / warung susu murah di jalan pulang, tamu senang kalau ditawari mampir.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 2 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div>
+<div class="page">
+  <div class="dayhead" style="background:#6D2E5B">
+    <div class="n">HARI 3</div>
+    <h1>Kafe Seni Dago — <b>pindah hotel</b></h1>
+    <div class="dt">Selasa, 9 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>09.00 dari hotel</div>
+    <div><span>Selesai</span>± 19.30 check-in hotel baru</div>
+    <div><span>Menginap</span>PINDAH ke Swiss-Belresort Dago Heritage (malam 3)</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">09.00</td><td class="tuj"><b>Checkout Holiday Inn Pasteur + berangkat</b><span class="area">Jl. Dr. Djunjunan No. 96</span></td><td class="lama">—</td><td class="cat"><b>PENTING:</b> semua koper masuk mobil pagi ini dan ikut sepanjang hari. Malam nanti check-in di hotel lain.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 30 menit ke arah Dago Atas</td></tr><tr><td class="jam">± 09.30</td><td class="tuj"><b>Congo Gallery &amp; Café</b><span class="area">Dago Atas, Bandung</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Congo%20Gallery%20%26%20Caf%C3%A9%20Dago%20Atas%2C%20Bandung">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Sarapan / brunch.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 25 menit</td></tr><tr><td class="jam">± 11.30</td><td class="tuj"><b>Lawangwangi Creative Space</b><span class="area">Dago Giri, Bandung Utara</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lawangwangi%20Creative%20Space%20Dago%20Giri%2C%20Bandung%20Utara">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Kafe galeri di tepi tebing. Makan siang di sini.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 20 menit</td></tr><tr><td class="jam">± 13.30</td><td class="tuj"><b>Gia's Garage</b><span class="area">Bandung Utara — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Gia%27s%20Garage%20Bandung%20Utara%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">1 jam</td><td class="cat">Kafe taman bunga.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 20 menit</td></tr><tr><td class="jam">± 15.00</td><td class="tuj"><b>Dago Bakery Punclut</b><span class="area">Punclut, Ciumbuleuit</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Dago%20Bakery%20Punclut%20Punclut%2C%20Ciumbuleuit">📍 Buka di Google Maps</a></td><td class="lama">1 jam</td><td class="cat">Kafe bentuk kastil. Ngopi sore.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 20 menit</td></tr><tr><td class="jam">± 16.30</td><td class="tuj"><b>Mercusuar Cafe &amp; Resto</b><span class="area">Bandung Utara — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Mercusuar%20Cafe%20%26%20Resto%20Bandung%20Utara%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">2 jam</td><td class="cat">Kafe mercusuar di bukit. Tamu mau lihat matahari terbenam + lampu kota. Makan malam di sini.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 30 menit ke hotel baru</td></tr><tr><td class="jam">± 19.30</td><td class="tuj"><b>Check-in Swiss-Belresort Dago Heritage</b><span class="area">Lapangan Golf Dago Atas No. 78, Bandung 40135</span></td><td class="lama">selesai</td><td class="cat">Bantu turunkan koper. Besok jemput <b>07.30 pagi</b> — hari paling padat.</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Nyetir hari ini ringan (&plusmn; 2,5 jam total), semua di area Dago / Bandung Utara.</li><li>Semua tempat hari ini kafe &amp; galeri — tamu pakai baju rapi, tidak ada kegiatan berat.</li><li>Jangan sampai ada barang tamu tertinggal di Holiday Inn saat checkout.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 3 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div>
+<div class="page compact">
+  <div class="dayhead" style="background:#C0437A">
+    <div class="n">HARI 4</div>
+    <h1>Lembang & Cikole — hari paling padat</h1>
+    <div class="dt">Rabu, 10 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>07.30 dari hotel</div>
+    <div><span>Selesai</span>± 21.30 di hotel</div>
+    <div><span>Menginap</span>Swiss-Belresort Dago Heritage (malam 4)</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">07.30</td><td class="tuj"><b>Berangkat dari Swiss-Belresort</b></td><td class="lama">—</td><td class="cat">Hari penuh dari pagi sampai malam. Mobil siap 07.20.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 50 menit ke Cikole, Lembang</td></tr><tr><td class="jam">± 08.30</td><td class="tuj"><b>Strobilus Cafe &amp; Resto</b><span class="area">Cikole, Lembang</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Strobilus%20Cafe%20%26%20Resto%20Cikole%2C%20Lembang">📍 Buka di Google Maps</a></td><td class="lama">1 jam</td><td class="cat">Sarapan di hutan pinus. Buka jam 09.00 — kalau kepagian, tunggu sebentar di parkiran.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 10.00</td><td class="tuj"><b>Orchid Forest Cikole</b><span class="area">Cikole, Lembang</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Orchid%20Forest%20Cikole%20Cikole%2C%20Lembang">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Hutan pinus + taman anggrek.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 30 menit turun ke Lembang</td></tr><tr><td class="jam">± 12.00</td><td class="tuj"><b>Farmhouse Susu Lembang</b><span class="area">Jl. Raya Lembang</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Farmhouse%20Susu%20Lembang%20Jl.%20Raya%20Lembang">📍 Buka di Google Maps</a></td><td class="lama">1 jam</td><td class="cat">Makan siang di sekitar sini.</td></tr><tr><td class="jam">± 13.30</td><td class="tuj"><b>The Great Asia Africa</b><span class="area">Jl. Raya Lembang — sebelah Farmhouse</span><a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Great%20Asia%20Africa%20Jl.%20Raya%20Lembang%20%E2%80%94%20sebelah%20Farmhouse">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat"><b>Jalan kaki dari Farmhouse.</b> Cukup parkir sekali untuk dua tempat ini.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 15 menit</td></tr><tr><td class="jam">± 15.00</td><td class="tuj"><b>Floating Market Lembang</b><span class="area">Jl. Grand Hotel, Lembang</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Floating%20Market%20Lembang%20Jl.%20Grand%20Hotel%2C%20Lembang">📍 Buka di Google Maps</a></td><td class="lama">1,5 jam</td><td class="cat">Perahu + perosotan pelangi + jajanan.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 35 menit ke Maribaya</td></tr><tr><td class="jam">± 17.00</td><td class="tuj"><b>The Lodge Maribaya</b><span class="area">Cibodas, Lembang</span><a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Lodge%20Maribaya%20Cibodas%2C%20Lembang">📍 Buka di Google Maps</a></td><td class="lama">2 jam</td><td class="cat">Ayunan langit, sepeda gantung, pemandangan lembah.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; &plusmn; 10 menit</td></tr><tr><td class="jam">± 20.00</td><td class="tuj"><b>Hutan Mycelia</b><span class="area">Lembang / Bandung Utara — cek Google Maps</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hutan%20Mycelia%20Lembang%20/%20Bandung%20Utara%20%E2%80%94%20cek%20Google%20Maps">📍 Buka di Google Maps</a></td><td class="lama">1 jam</td><td class="cat"><b>Baru buka jam 18.00</b> — hutan glow-in-the-dark, memang harus malam. Jangan datang sebelum gelap.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; PERJALANAN: balik ke Dago &mdash; &plusmn; 1 jam (jalan malam, hati-hati)</td></tr><tr><td class="jam">± 21.30</td><td class="tuj"><b>Antar kembali ke Swiss-Belresort Dago</b></td><td class="lama">selesai</td><td class="cat">Besok jemput <b>09.30</b> setelah checkout — hari terakhir di Bandung.</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Jadwal padat 07.30 – 21.30. Tolong bantu jaga waktu, kalau satu tempat molor yang lain ikut mundur.</li><li>Total nyetir &plusmn; 3,5 jam, tapi terpecah-pecah. Jalan Lembang macet siang &amp; akhir pekan — ambil jalan alternatif kalau perlu.</li><li>Kalau waktu mepet, yang paling bisa dipotong: Floating Market. Hutan Mycelia jangan dilewat, cuma bisa malam.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 4 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div>
+<div class="page">
+  <div class="dayhead" style="background:#7A5410">
+    <div class="n">HARI 5</div>
+    <h1>Belanja Oleh-Oleh + Kembali ke Jakarta</h1>
+    <div class="dt">Kamis, 11 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>09.30 dari hotel</div>
+    <div><span>Selesai</span>± 16.30 di hotel bandara</div>
+    <div><span>Menginap</span>PINDAH ke Fairfield by Marriott, dekat Bandara Soekarno-Hatta (malam 5)</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">08.00</td><td class="tuj"><b>Tamu sarapan di hotel</b></td><td class="lama">1,5 jam</td><td class="cat">Kiki datang jam 09.20, koper masuk mobil.</td></tr><tr><td class="jam">± 09.30</td><td class="tuj"><b>Checkout + belanja oleh-oleh</b><span class="area">Kartika Sari, Amanda Brownies, Cibaduyut</span></td><td class="lama">2 jam</td><td class="cat">Bolu gulung Kartika Sari, brownies Amanda, sepatu kulit Cibaduyut. Kiki bantu pilih cabang yang paling searah jalan ke tol.</td></tr><tr><td class="jam">± 11.30</td><td class="tuj"><b>Makan siang terakhir di Bandung</b></td><td class="lama">1 jam</td><td class="cat">Kiki boleh rekomendasikan tempat.</td></tr><tr><td class="jam">± 13.00</td><td class="tuj"><b><b>Berangkat ke Jakarta — paling lambat jam 13.00</b></b></td><td class="lama">—</td><td class="cat">Kalau lewat jam 13.00, kena macet sore di Cipularang / Jakarta.</td></tr><tr class="drive"><td colspan="4">&#128663;&nbsp; PERJALANAN: Bandung &rarr; Bandara Soekarno-Hatta &mdash; &plusmn; 3 &ndash; 3,5 jam</td></tr><tr><td class="jam">± 16.30</td><td class="tuj"><b>Check-in Fairfield by Marriott</b><span class="area">Jl. Husein Sastranegara No. 88, Tangerang (5-10 menit dari bandara)</span></td><td class="lama">selesai</td><td class="cat">Tugas hari ini selesai setelah antar ke hotel. <b>Konfirmasi</b> apakah Kiki menginap dekat sana atau kembali besok pagi.</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Malam ini tamu makan malam di sekitar hotel — jalan kaki / Grab, tidak perlu mobil (kecuali diminta).</li><li>Total nyetir &plusmn; 3,5 jam tol + keliling kota pagi.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 5 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div>
+<div class="page">
+  <div class="dayhead" style="background:#5B6560">
+    <div class="n">HARI 6</div>
+    <h1>Antar ke Bandara — Pulang ke Malaysia</h1>
+    <div class="dt">Jumat, 12 September 2026</div>
+  </div>
+  <div class="daymeta">
+    <div><span>Mulai</span>09.30 dari hotel</div>
+    <div><span>Selesai</span>± 10.00 selesai</div>
+    <div><span>Menginap</span>—</div>
+  </div>
+  <table class="sched">
+    <tr><th>Jam</th><th>Tujuan</th><th>Lama</th><th>Catatan untuk Pak Kiki</th></tr>
+    <tr><td class="jam">07.30</td><td class="tuj"><b>Tamu sarapan di hotel</b></td><td class="lama">1 jam</td><td class="cat">Mobil siap jam 09.20.</td></tr><tr><td class="jam">± 09.30</td><td class="tuj"><b>Checkout → antar ke <b>CGK Terminal 3</b></b><span class="area">Bandara Soekarno-Hatta, Terminal 3 keberangkatan internasional</span></td><td class="lama">± 10 menit</td><td class="cat"><b>Terminal 3, bukan Terminal 2.</b> Malaysia Airlines ada di Terminal 3.</td></tr><tr><td class="jam">± 10.00</td><td class="tuj"><b>Turunkan tamu + koper di keberangkatan</b></td><td class="lama">selesai</td><td class="cat">Pesawat jam 12.00 siang, tamu butuh 2 jam untuk check-in &amp; imigrasi. Sampai jumpa &amp; terima kasih, Pak Kiki 🙏</td></tr>
+  </table>
+  <div class="dnotes"><b>Catatan hari ini</b><ul><li>Hotel hanya 5-10 menit dari terminal, jadi pagi ini santai — tapi tetap jangan telat, penerbangan internasional.</li></ul></div>
+  <div class="foot">Jadwal Bandung Haris Haikal &amp; Aina Izzaty &middot; HARI 6 &middot; jam bersifat perkiraan, Pak Kiki boleh menyesuaikan dengan lalu lintas</div>
+</div></body></html>

@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Bandung trip itinerary and checklist for Haris & Aina, 7-12 September 2026">
 <title>Bandung Trip · Haris & Aina</title>
+
+<!-- Add to Home Screen -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2F6B4F">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bandung">
 <style>
   :root {
     --paper: #F5F2EC;
@@ -33,7 +44,7 @@
   header {
     background: var(--moss);
     color: #F5F2EC;
-    padding: 34px 24px 28px;
+    padding: calc(34px + env(safe-area-inset-top, 0px)) 24px 28px;
     text-align: center;
   }
   header .eyebrow {
@@ -579,6 +590,7 @@ function updateProgress() {
 async function resetAll() { state = {}; await save(); render(); }
 
 function switchTab(which) {
+  try { history.replaceState(null, '', which === 'check' ? '?tab=check' : '?tab=itin'); } catch (e) {}
   document.getElementById('tab-itin').classList.toggle('active', which === 'itin');
   document.getElementById('tab-check').classList.toggle('active', which === 'check');
   document.getElementById('panel-itin').classList.toggle('active', which === 'itin');
@@ -588,6 +600,16 @@ function switchTab(which) {
 function start() {
   try { renderItin(); } catch (e) {}
   try { load(); } catch (e) { try { render(); } catch (e2) {} }
+  try {
+    const want = new URLSearchParams(location.search).get('tab') ||
+                 (location.hash === '#check' ? 'check' : '');
+    if (want === 'check') switchTab('check');
+  } catch (e) {}
+}
+
+/* Works offline once opened — signal is patchy in Ciwidey & Cikole. */
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
 else start();
