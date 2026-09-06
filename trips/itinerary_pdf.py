@@ -148,17 +148,25 @@ def render_day(d, travellers, country, no_map):
 
 
 def render_extra(trip):
-    """Optional closing page: nearby places, as a plain table."""
-    x = trip.get("extra_page")
-    if not x:
-        return ""
+    """Optional closing pages: reference tables (food, hotels, places that didn't fit)."""
+    pages = trip.get("extra_pages") or ([trip["extra_page"]] if trip.get("extra_page") else [])
+    return "".join(render_extra_page(trip, x) for x in pages)
+
+
+def render_extra_page(trip, x):
+    def cell(name, area):
+        if x.get("no_maps"):
+            return f'<b>{name}</b>'
+        link = maps_link(name, area, trip["country"])
+        return f'<b>{name}</b><a href="{link}">&#128205; Open in Google Maps</a>'
+
     rows = "".join(
-        f'<tr><td class="tuj"><b>{name}</b>'
-        f'<a href="{maps_link(name, area, trip["country"])}">&#128205; Open in Google Maps</a></td>'
+        f'<tr><td class="tuj">{cell(name, area)}</td>'
         f'<td class="lama" style="width:118px">{area}</td>'
         f'<td class="cat">{note}</td></tr>'
         for name, area, note in x["rows"]
     )
+    head = x.get("col_heads", ("Place", "Where", "Why, and when to slot it in"))
     return f"""
 <div class="page">
   <div class="dayhead" style="background:{x['color']}">
@@ -167,11 +175,11 @@ def render_extra(trip):
     <div class="dt">{x['subtitle']}</div>
   </div>
   <table class="sched" style="margin-top:0">
-    <tr><th>Place</th><th>Where</th><th>Why, and when to slot it in</th></tr>
+    <tr><th>{head[0]}</th><th>{head[1]}</th><th>{head[2]}</th></tr>
     {rows}
   </table>
-  <div class="dnotes"><b class="h">How to use this page</b><ul>{''.join(f'<li>{n}</li>' for n in x['notes'])}</ul></div>
-  <div class="foot">{trip['country']} · {trip['travellers']} · nearby options</div>
+  <div class="dnotes"><b class="h">{x.get("notes_head", "How to use this page")}</b><ul>{''.join(f'<li>{n}</li>' for n in x['notes'])}</ul></div>
+  <div class="foot">{trip['country']} · {trip['travellers']} · {x.get('foot', 'reference')}</div>
 </div>"""
 
 
