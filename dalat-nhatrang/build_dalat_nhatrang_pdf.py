@@ -165,6 +165,7 @@ TRIP = dict(
     country="Vietnam",
     no_map=("Breakfast", "Lunch", "Dinner", "Check in", "Checkout", "Connect", "Back to",
             "KUL →", "SGN →", "CXR →", "Evening café", "Beach time", "Sunset", "A greenhouse"),
+    summary_title="The Five Days",
     summary_head=("Day", "Date", "Where", "Outfit theme", "Sleep"),
     summary_rows=[
         ("Day 1", "Tue, 8 Sep", "Fly in via Saigon, café evening", "Soft blue + brown", "Da Lat"),

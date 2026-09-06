@@ -147,6 +147,34 @@ def render_day(d, travellers, country, no_map):
 </div>"""
 
 
+def render_extra(trip):
+    """Optional closing page: nearby places, as a plain table."""
+    x = trip.get("extra_page")
+    if not x:
+        return ""
+    rows = "".join(
+        f'<tr><td class="tuj"><b>{name}</b>'
+        f'<a href="{maps_link(name, area, trip["country"])}">&#128205; Open in Google Maps</a></td>'
+        f'<td class="lama" style="width:118px">{area}</td>'
+        f'<td class="cat">{note}</td></tr>'
+        for name, area, note in x["rows"]
+    )
+    return f"""
+<div class="page">
+  <div class="dayhead" style="background:{x['color']}">
+    <div class="n">{x['kicker']}</div>
+    <h1>{x['title']}</h1>
+    <div class="dt">{x['subtitle']}</div>
+  </div>
+  <table class="sched" style="margin-top:0">
+    <tr><th>Place</th><th>Where</th><th>Why, and when to slot it in</th></tr>
+    {rows}
+  </table>
+  <div class="dnotes"><b class="h">How to use this page</b><ul>{''.join(f'<li>{n}</li>' for n in x['notes'])}</ul></div>
+  <div class="foot">{trip['country']} · {trip['travellers']} · nearby options</div>
+</div>"""
+
+
 def build_html(trip):
     summary = "".join(
         '<tr>' + "".join(
@@ -161,6 +189,7 @@ def build_html(trip):
         for i, (t, s) in enumerate(trip["book_now"])
     )
     three = " three" if trip.get("know_cols") == 3 else ""
+    summary_title = trip.get("summary_title", "The Six Days")
     know = "".join(f'<div class="c"><b>{a}</b><span>{b}</span></div>' for a, b in trip["good_to_know"])
 
     cover = f"""
@@ -171,7 +200,7 @@ def build_html(trip):
     <div class="s">{trip['subtitle']}</div>
   </div>
 
-  <h2>The Six Days</h2>
+  <h2>{summary_title}</h2>
   <table class="sum"><tr>{heads}</tr>{summary}</table>
 
   <h2 class="alt">{trip['book_now_head']}</h2>
@@ -189,7 +218,7 @@ def build_html(trip):
     )
     return (f'<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8">\n'
             f'<title>{trip["doc_title"]}</title>\n<style>{CSS}</style></head>'
-            f'<body>{cover}{days}</body></html>')
+            f'<body>{cover}{days}{render_extra(trip)}</body></html>')
 
 
 def find_chromium():
