@@ -44,13 +44,13 @@ h2.alt { color:#B23A16; border-bottom-color:#B23A16; }
 .notebox .num { flex:0 0 15px; height:15px; border-radius:3px; background:#B23A16; color:#fff;
                 font-size:8pt; font-weight:700; text-align:center; line-height:15px; }
 .notebox .txt { flex:1; font-size:8.5pt; }
-.notebox .txt b { display:block; }
+.notebox .txt > b { display:block; }
 .notebox .txt span { color:#4A4A44; }
 
 .ct { display:flex; flex-wrap:wrap; }
 .ct .c { width:50%; padding:2.5px 10px 2.5px 0; font-size:8.4pt; }
 .ct.three .c { width:33.33%; font-size:8pt; padding-right:8px; }
-.ct .c b { display:block; color:#222; }
+.ct .c > b { display:block; color:#222; }
 .ct .c span { color:#4A4A44; }
 
 .dayhead { color:#fff; padding:12px 16px; border-radius:6px 6px 0 0; }
