@@ -79,6 +79,19 @@ h2.alt { color:#B23A16; border-bottom-color:#B23A16; }
 .compact .sched td { padding:3px 6px; font-size:8.8pt; }
 .compact .sched td.tuj b, .compact .sched td.jam { font-size:9.2pt; }
 .compact .dnotes li { font-size:8.5pt; }
+.dense .dayhead { padding:7px 16px; }
+.dense .dayhead h1 { font-size:14pt; }
+.dense .daymeta div { padding:4px 12px; font-size:8.2pt; }
+.dense .outfit { padding:3px 12px; font-size:8.2pt; }
+.dense .sched { margin-top:6px; }
+.dense .sched td { padding:1.5px 5px; font-size:7.9pt; }
+.dense .sched td.tuj b, .dense .sched td.jam { font-size:8.3pt; }
+.dense .sched td.tuj .area { font-size:7.6pt; }
+.dense .sched td.tuj a { font-size:7.2pt; }
+.dense .sched tr.move td { font-size:7.4pt; padding:1.5px; }
+.dense .dnotes { margin-top:5px; padding:5px 10px; }
+.dense .dnotes li { font-size:7.8pt; }
+.dense .foot { margin-top:8px; }
 
 .dnotes { margin-top:8px; border-left:4px solid #B26C12; background:#FDF8EF; padding:7px 12px; }
 .dnotes b.h { display:block; font-size:8.5pt; text-transform:uppercase; letter-spacing:1px; color:#8A5A10; margin-bottom:4px; }
@@ -124,7 +137,7 @@ def render_day(d, travellers, country, no_map):
             f'<td class="cat">{note}</td></tr>'
         )
     notes = "".join(f"<li>{n}</li>" for n in d["notes"])
-    compact = " compact" if d.get("compact") else ""
+    compact = " dense" if d.get("dense") else (" compact" if d.get("compact") else "")
     return f"""
 <div class="page{compact}">
   <div class="dayhead" style="background:{d['color']}">
@@ -168,7 +181,7 @@ def render_extra_page(trip, x):
     )
     head = x.get("col_heads", ("Place", "Where", "Why, and when to slot it in"))
     return f"""
-<div class="page">
+<div class="page{' dense' if x.get('dense') else ''}">
   <div class="dayhead" style="background:{x['color']}">
     <div class="n">{x['kicker']}</div>
     <h1>{x['title']}</h1>
