@@ -23,23 +23,26 @@ H_MN = "Bamboo Village Beach Resort &amp; Spa (4★)"
 
 DAYS = [
     dict(
-        n="DAY 1", date="Tuesday, 8 September", title="Fly to Saigon — one evening, then up to the hills",
+        n="DAY 1", date="Tuesday, 8 September", title="Fly to Saigon — the post office, then the boulevard",
         color="#46688C",
         outfit="<b>Soft blue + brown</b> — café theme for the first evening",
-        start="Morning MAS from KLIA", finish="~21.00", sleep=f"{H_SGN} — 1 night only",
+        start="Morning MAS from KLIA", finish="~21.15", sleep=f"{H_SGN} — 1 night only",
         rows=[
             ("stop", "morning", "KUL → SGN — Malaysia Airlines", "KLIA", "~2h",
              "MH750 / MH758 / MH766, about 7 a day. Take one landing early afternoon. Vietnam is <b>1 hour behind Malaysia</b>."),
             ("move", "Tan Son Nhat &rarr; District 1 &mdash; 8 km, 30&ndash;45 min in traffic", "", "", "", ""),
             ("stop", "~14.30", f"Check in — <b>{H_SGN}</b>", "District 1, by Đông Du street", "1h",
              "Check-in 14:00, checkout 12:00. Chosen for position: the <b>Saigon Central Mosque is on Đông Du</b>, with a dozen halal restaurants within five minutes."),
-            ("stop", "~16.00", "Nguyễn Huệ walking street", "District 1", "1h",
-             "The wide pedestrian boulevard up to the old City Hall. Ten minutes on foot from the hotel."),
-            ("stop", "~17.15", "The Café Apartment, 42 Nguyễn Huệ", "Nguyễn Huệ", "1.5h",
-             "A nine-storey 1960s block where every flat is a café or tiny shop, each with a balcony over the street. Lift to the top, walk down. <b>Photos and the view</b> — eat at Đông Du."),
-            ("stop", "~19.00", "🍽 Dinner — Đông Du street", "District 1, by the mosque", "1.5h",
+            ("stop", "~15.45", "Saigon Central Post Office", "Công xã Paris, District 1", "1h",
+             "Gustave Eiffel-era ironwork, painted tiles and the old wall maps — and still a working post office, so send yourselves a postcard from the counter. Ten minutes' walk from the hotel, and it shuts around 19:00, so it goes first."),
+            ("move", "~10 min walk down to the river end", "", "", "", ""),
+            ("stop", "~17.00", "Nguyễn Huệ walking street", "District 1", "45 min",
+             "The wide pedestrian boulevard up to the old City Hall."),
+            ("stop", "~17.50", "The Café Apartment, 42 Nguyễn Huệ", "Nguyễn Huệ", "1.25h",
+             "A nine-storey 1960s block where every flat is a café or tiny shop, each with a balcony over the street. Lift to the top, walk down — you'll catch the light going. <b>Photos and the view</b> — eat at Đông Du."),
+            ("stop", "~19.15", "🍽 Dinner — Đông Du street", "District 1, by the mosque", "1.5h",
              "Several halal restaurants in one short street, minutes from the hotel. The easiest eating of the trip — make the most of it, because Da Lat has only two."),
-            ("stop", "~20.45", "Early night, repack", f"{H_SGN}", "—",
+            ("stop", "~20.50", "Early night, repack", f"{H_SGN}", "—",
              "One night here and you fly in the morning. Repack so the Da Lat bag is the one you live out of."),
         ],
         notes=[
@@ -229,7 +232,7 @@ TRIP = dict(
     summary_title="The Six Days",
     summary_head=("Day", "Date", "Where you sleep", "The point of the day", "Outfit"),
     summary_rows=[
-        ("Day 1", "Tue, 8 Sep", "Alagon Saigon", "Fly in, Nguyễn Huệ, Café Apartment", "Soft blue + brown"),
+        ("Day 1", "Tue, 8 Sep", "Alagon Saigon", "Fly in, post office, Nguyễn Huệ, Café Apartment", "Soft blue + brown"),
         ("Day 2", "Wed, 9 Sep", "<b>Fly</b> → Hôtel Colline", "Direct up to Da Lat, Tà Nung, the lake", "Khaki + black"),
         ("Day 3", "Thu, 10 Sep", "Hôtel Colline", "Cloud bridge at dawn, Cầu Đất, Euro Garden", "Black leather + white"),
         ("Day 4", "Fri, 11 Sep", "Hôtel Colline", "Hydrangeas, Crazy House, Jumu'ah, Pink Valley, Langbiang", "Soft pink + white"),
