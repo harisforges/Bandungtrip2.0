@@ -211,11 +211,10 @@ DAYS = [
             ("stop", "17.25", "Check-in + immigration", "Tan Son Nhat T2", "2h",
              "Two hours before an international departure. You should reach Saigon around 16:15 — the spare hour sits here, so if the drive ran clean take a coffee, and if it didn't, go straight in. Traffic is the variable, not the airport."),
             ("stop", "19.25", "SGN → KUL — <b>MH767</b>, Malaysia Airlines", "Tan Son Nhat T2", "~1h 50m",
-             "Lands KLIA <b>~22:15–22:30</b>. Malaysia is 1 hour ahead."),
+             "Departs <b>19:25</b>, lands KLIA <b>~22:15</b>. Malaysia is 1 hour ahead, so the clock jumps an hour on landing."),
         ],
         notes=[
             "<b>The evening flight is what makes this day work</b> — sunrise dunes and a 200 km drive with hours to spare.",
-            "Note: your ticket says 19:25 and the published MH767 timetable currently shows 19:40. Either way it's the evening flight — go by your booking, and the plan has slack for both.",
             "Sand gets everywhere. Bag the dune clothes separately before you get in the car.",
         ],
     ),
